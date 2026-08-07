@@ -1,0 +1,21 @@
+.app-header {
+	display: flex;
+	gap: 8px;
+	padding: 18px 24px;
+	border-bottom: 1px solid #e2e6ea;
+	background: #fff;
+}
+
+.app-header a {
+	padding: 8px 12px;
+	border-radius: 6px;
+	color: #51636c;
+	font-size: 14px;
+	text-decoration: none;
+}
+
+.app-header a.active,
+.app-header a:hover {
+	background: #edf7f8;
+	color: #173f4b;
+}

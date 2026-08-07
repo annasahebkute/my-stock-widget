@@ -1,0 +1,39 @@
+0 verbose cli /usr/local/bin/node /usr/local/lib/node_modules/npm/bin/npm-cli.js
+1 info using npm@10.8.2
+2 info using node@v20.19.0
+3 silly config load:file:/usr/local/lib/node_modules/npm/npmrc
+4 silly config load:file:/Users/annasahebkute/Documents/My workplace/001 My Product/006 my-stock-portfolio/my-stock-widget/.npmrc
+5 silly config load:file:/Users/annasahebkute/Documents/My workplace/001 My Product/006 my-stock-portfolio/my-stock-widget/.firebase-home/.npmrc
+6 silly config load:file:/usr/local/etc/npmrc
+7 verbose title npm exec firebase-tools login --no-localhost
+8 verbose argv "exec" "--" "firebase-tools" "login" "--no-localhost"
+9 verbose logfile logs-max:10 dir:/Users/annasahebkute/Documents/My workplace/001 My Product/006 my-stock-portfolio/my-stock-widget/.npm-cache/_logs/2026-08-07T19_29_40_071Z-
+10 verbose logfile /Users/annasahebkute/Documents/My workplace/001 My Product/006 my-stock-portfolio/my-stock-widget/.npm-cache/_logs/2026-08-07T19_29_40_071Z-debug-0.log
+11 silly logfile done cleaning log files
+12 silly packumentCache heap:4345298944 maxSize:1086324736 maxEntrySize:543162368
+13 http fetch GET 403 https://registry.npmjs.org/firebase-tools 19ms (cache skip)
+14 verbose stack HttpErrorGeneral: 403 Forbidden - GET https://registry.npmjs.org/firebase-tools
+14 verbose stack     at /usr/local/lib/node_modules/npm/node_modules/npm-registry-fetch/lib/check-response.js:95:15
+14 verbose stack     at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+14 verbose stack     at async RegistryFetcher.packument (/usr/local/lib/node_modules/npm/node_modules/pacote/lib/registry.js:90:19)
+14 verbose stack     at async RegistryFetcher.manifest (/usr/local/lib/node_modules/npm/node_modules/pacote/lib/registry.js:128:23)
+14 verbose stack     at async getManifest (/usr/local/lib/node_modules/npm/node_modules/libnpmexec/lib/index.js:27:22)
+14 verbose stack     at async missingFromTree (/usr/local/lib/node_modules/npm/node_modules/libnpmexec/lib/index.js:60:22)
+14 verbose stack     at async /usr/local/lib/node_modules/npm/node_modules/libnpmexec/lib/index.js:182:32
+14 verbose stack     at async Promise.all (index 0)
+14 verbose stack     at async exec (/usr/local/lib/node_modules/npm/node_modules/libnpmexec/lib/index.js:180:3)
+14 verbose stack     at async Npm.exec (/usr/local/lib/node_modules/npm/lib/npm.js:207:9)
+15 verbose statusCode 403
+16 verbose pkgid firebase-tools@*
+17 error code E403
+18 error 403 403 Forbidden - GET https://registry.npmjs.org/firebase-tools
+19 error 403 In most cases, you or one of your dependencies are requesting
+19 error 403 a package version that is forbidden by your security policy, or
+19 error 403 on a server you do not have access to.
+20 verbose cwd /Users/annasahebkute/Documents/My workplace/001 My Product/006 my-stock-portfolio/my-stock-widget
+21 verbose os Darwin 25.5.0
+22 verbose node v20.19.0
+23 verbose npm  v10.8.2
+24 verbose exit 1
+25 verbose code 1
+26 error A complete log of this run can be found in: /Users/annasahebkute/Documents/My workplace/001 My Product/006 my-stock-portfolio/my-stock-widget/.npm-cache/_logs/2026-08-07T19_29_40_071Z-debug-0.log

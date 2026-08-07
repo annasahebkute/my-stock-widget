@@ -1,0 +1,22 @@
+0 verbose cli /usr/local/bin/node /usr/local/lib/node_modules/npm/bin/npm-cli.js
+1 info using npm@10.8.2
+2 info using node@v20.19.0
+3 silly config load:file:/usr/local/lib/node_modules/npm/npmrc
+4 silly config load:file:/Users/annasahebkute/Documents/My workplace/001 My Product/006 my-stock-portfolio/my-stock-widget/.npmrc
+5 silly config load:file:/Users/annasahebkute/Documents/My workplace/001 My Product/006 my-stock-portfolio/my-stock-widget/.firebase-home/.npmrc
+6 silly config load:file:/usr/local/etc/npmrc
+7 verbose title npm exec firebase-tools deploy --only functions
+8 verbose argv "exec" "--" "firebase-tools" "deploy" "--only" "functions"
+9 verbose logfile logs-max:10 dir:/Users/annasahebkute/Documents/My workplace/001 My Product/006 my-stock-portfolio/my-stock-widget/.npm-cache/_logs/2026-08-07T19_29_32_111Z-
+10 verbose logfile /Users/annasahebkute/Documents/My workplace/001 My Product/006 my-stock-portfolio/my-stock-widget/.npm-cache/_logs/2026-08-07T19_29_32_111Z-debug-0.log
+11 silly logfile done cleaning log files
+12 silly packumentCache heap:4345298944 maxSize:1086324736 maxEntrySize:543162368
+13 http fetch GET 200 https://registry.npmjs.org/firebase-tools 83ms (cache revalidated)
+14 silly packumentCache heap:4345298944 maxSize:1086324736 maxEntrySize:543162368
+15 silly packumentCache heap:4345298944 maxSize:1086324736 maxEntrySize:543162368
+16 verbose cwd /Users/annasahebkute/Documents/My workplace/001 My Product/006 my-stock-portfolio/my-stock-widget
+17 verbose os Darwin 25.5.0
+18 verbose node v20.19.0
+19 verbose npm  v10.8.2
+20 verbose exit 1
+21 verbose code 1
