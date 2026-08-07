@@ -1,0 +1,41 @@
+<section class="portfolio-section">
+  <div class="table-scroll">
+    <table class="stock-table">
+      <thead>
+        <tr>
+          <th>Stock</th>
+          <th>Quantity</th>
+          <th>Buy price</th>
+          <th>Invested value</th>
+          <th>Market price</th>
+          <th>52 Week High</th>
+          <th>52 Week Low</th>
+          <th>Alert</th>
+          <th>Profit / Loss</th>
+          <th>Data status</th>
+        </tr>
+      </thead>
+      <tbody>
+  <app-stock
+    *ngFor="let s of stocks"
+    [name]="s.name"
+    [symbol]="s.symbol"
+    [quantity]="s.quantity"
+    [buyPrice]="s.buyPrice"
+    (marketValueChange)="updateMarketValue(s.symbol, $event)">
+  </app-stock>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="investment-summary">
+    <div>
+      <span class="summary-label">Total investment</span>
+      <strong>₹{{ totalInvestment | number: '1.2-2' }}</strong>
+    </div>
+    <div>
+      <span class="summary-label">Total current value</span>
+      <strong>₹{{ totalCurrentValue | number: '1.2-2' }}</strong>
+    </div>
+  </div>
+</section>

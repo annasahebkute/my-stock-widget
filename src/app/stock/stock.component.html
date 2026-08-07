@@ -1,0 +1,43 @@
+<tr *ngIf="loading()">
+  <td colspan="10">
+    <div class="data-indicator loading-indicator">
+      <span class="indicator-dot" aria-hidden="true"></span>
+      <span>Loading {{ name || symbol }}...</span>
+    </div>
+  </td>
+</tr>
+
+<tr *ngIf="!loading() && error() && !usingCachedData()">
+  <td>{{ name || symbol }}<small>{{ symbol }}</small></td>
+  <td colspan="8">{{ error() }}</td>
+  <td>
+    <div class="data-indicator unavailable-indicator">
+      <span class="indicator-dot" aria-hidden="true"></span>
+      <span>Unavailable</span>
+    </div>
+  </td>
+</tr>
+
+<tr *ngIf="!loading() && (!error() || usingCachedData())">
+  <td class="stock-name">{{ name }}<small>{{ symbol }}</small></td>
+  <td>{{ quantity | number: '1.0-2' }}</td>
+  <td>₹{{ buyPrice | number: '1.2-2' }}</td>
+  <td>₹{{ quantity * buyPrice | number: '1.2-2' }}</td>
+  <td>₹{{ price() | number: '1.2-2' }}</td>
+  <td>₹{{ high52() | number: '1.2-2' }}</td>
+  <td>₹{{ low52() | number: '1.2-2' }}</td>
+  <td>
+    <span class="alert-badge high-alert" *ngIf="isNear52WeekHigh()">Near 52W high</span>
+    <span class="alert-badge low-alert" *ngIf="isNear52WeekLow()">Near 52W low</span>
+    <span class="no-alert" *ngIf="!isNear52WeekHigh() && !isNear52WeekLow()">-</span>
+  </td>
+  <td class="profit-loss" [class.up]="price() >= buyPrice" [class.down]="price() < buyPrice">
+    {{ price() >= buyPrice ? '+' : '' }}₹{{ (price() - buyPrice) * quantity | number: '1.2-2' }}
+  </td>
+  <td>
+    <div class="data-indicator" [class.cached-indicator]="usingCachedData()" [class.live-indicator]="!usingCachedData()">
+      <span class="indicator-dot" aria-hidden="true"></span>
+      <span>{{ usingCachedData() ? 'Saved' : 'Live' }}<small>Updated {{ lastUpdated() }}</small></span>
+    </div>
+  </td>
+</tr>

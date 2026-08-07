@@ -1,0 +1,64 @@
+<section class="manage-page">
+  <div class="page-heading">
+    <div>
+      <p class="eyebrow">Portfolio setup</p>
+      <h1>{{ editingId ? 'Edit stock' : 'Add stock' }}</h1>
+      <p class="intro">Save the stocks, quantities, and buy prices used by your portfolio.</p>
+    </div>
+  </div>
+
+  <form class="stock-form" (ngSubmit)="saveStock()">
+    <label>
+      Stock name
+      <input name="name" [(ngModel)]="form.name" placeholder="HDFC Bank" required>
+    </label>
+    <label>
+      Symbol
+      <input name="symbol" [(ngModel)]="form.symbol" placeholder="HDFCBANK" required>
+    </label>
+    <label>
+      Quantity
+      <input name="quantity" type="number" min="0" [(ngModel)]="form.quantity" required>
+    </label>
+    <label>
+      Buy price
+      <input name="buyPrice" type="number" min="0" step="0.01" [(ngModel)]="form.buyPrice" required>
+    </label>
+    <div class="form-actions">
+      <button class="primary" type="submit" [disabled]="saving">{{ saving ? 'Saving...' : (editingId ? 'Update stock' : 'Add stock') }}</button>
+      <button *ngIf="editingId" type="button" (click)="cancelEdit()">Cancel</button>
+    </div>
+  </form>
+
+  <p class="message" *ngIf="message">{{ message }}</p>
+  <p class="error" *ngIf="error">{{ error }}</p>
+
+  <div class="table-scroll">
+    <table class="manage-table">
+      <thead>
+        <tr>
+          <th>Stock</th>
+          <th>Symbol</th>
+          <th>Quantity</th>
+          <th>Buy price</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let stock of stocks">
+          <td>{{ stock.name }}</td>
+          <td>{{ stock.symbol }}</td>
+          <td>{{ stock.quantity }}</td>
+          <td>₹{{ stock.buyPrice | number: '1.2-2' }}</td>
+          <td class="actions">
+            <button type="button" (click)="editStock(stock)">Edit</button>
+            <button type="button" class="delete" (click)="deleteStock(stock)">Delete</button>
+          </td>
+        </tr>
+        <tr *ngIf="!stocks.length">
+          <td colspan="5" class="empty">No stocks saved yet.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>

@@ -1,0 +1,98 @@
+.portfolio-section {
+  padding: 24px;
+  background: #f6f8fa;
+}
+
+.table-scroll {
+  overflow-x: auto;
+  border: 1px solid #e2e6ea;
+  border-radius: 10px;
+  background: #fff;
+}
+
+.stock-table {
+  width: 100%;
+  min-width: 900px;
+  border-collapse: collapse;
+  color: #25313c;
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+.stock-table app-stock {
+  display: contents;
+}
+
+.stock-table th,
+.stock-table td {
+  padding: 14px 16px;
+  border-bottom: 1px solid #edf0f2;
+  text-align: left;
+  white-space: nowrap;
+}
+
+.stock-table th {
+  background: #f8fafb;
+  color: #687580;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.stock-table tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.stock-table tbody tr:hover {
+  background: #fbfcfd;
+}
+
+.stock-name {
+  font-weight: 700;
+}
+
+.stock-name small,
+.stock-table td small {
+  display: block;
+  margin-top: 3px;
+  color: #8a969f;
+  font-size: 11px;
+  font-weight: 400;
+}
+
+.stock-table input {
+  width: 82px;
+  box-sizing: border-box;
+  padding: 7px 8px;
+  border: 1px solid #d7dde2;
+  border-radius: 5px;
+  color: #25313c;
+  font: inherit;
+}
+
+.stock-table input:focus {
+  border-color: #377d9b;
+  outline: 2px solid #d7edf4;
+}
+
+.investment-summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 420px;
+  margin: 18px 0 0 auto;
+  padding: 18px 20px;
+  border: 1px solid #d9e4e8;
+  border-radius: 10px;
+  background: #edf7f8;
+}
+
+.summary-label {
+  color: #51636c;
+  font-size: 13px;
+}
+
+.investment-summary strong {
+  color: #173f4b;
+  font-size: 22px;
+}
