@@ -1,8 +1,52 @@
-<header class="app-header">
-	<a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Portfolio</a>
-	<a routerLink="/manage-stocks" routerLinkActive="active">Manage stocks</a>
-</header>
+<ng-container *ngIf="user; else loginPage">
+	<header class="app-header">
+		<div class="brand">Market memo</div>
+		<nav>
+			<a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Portfolio</a>
+			<a routerLink="/manage-stocks" routerLinkActive="active">Manage stocks</a>
+		</nav>
+		<div class="account">
+			<span>{{ user.email }}</span>
+			<button type="button" class="text-button" (click)="logout()">Sign out</button>
+		</div>
+	</header>
 
-<main>
-	<router-outlet></router-outlet>
-</main>
+	<main>
+		<router-outlet></router-outlet>
+	</main>
+</ng-container>
+
+<ng-template #loginPage>
+	<main class="auth-page">
+		<section class="auth-intro">
+			<p class="eyebrow">Market memo</p>
+			<h1>Your portfolio,<br><em>in focus.</em></h1>
+			<p class="intro-copy">Track the stocks that matter to you and keep every alert close at hand.</p>
+		</section>
+
+		<section class="auth-panel" aria-labelledby="login-heading">
+			<div class="panel-heading">
+				<p class="eyebrow">{{ isSignUp ? 'Create your account' : 'Welcome back' }}</p>
+				<h2 id="login-heading">{{ isSignUp ? 'Start watching.' : 'Sign in to continue.' }}</h2>
+			</div>
+
+			<form (ngSubmit)="submit()" #authForm="ngForm">
+				<label for="email">Email address</label>
+				<input id="email" name="email" type="email" [(ngModel)]="email" required autocomplete="email" placeholder="you@example.com">
+
+				<label for="password">Password</label>
+				<input id="password" name="password" type="password" [(ngModel)]="password" required minlength="6" [autocomplete]="isSignUp ? 'new-password' : 'current-password'" placeholder="At least 6 characters">
+
+				<p class="error" *ngIf="errorMessage" role="alert">{{ errorMessage }}</p>
+				<button class="submit-button" type="submit" [disabled]="authForm.invalid || isLoading">
+					{{ isLoading ? 'Please wait...' : (isSignUp ? 'Create account' : 'Sign in') }}
+				</button>
+			</form>
+
+			<!-- <p class="switch-mode">
+				{{ isSignUp ? 'Already have an account?' : 'New to Market memo?' }}
+				<button type="button" class="text-button" (click)="toggleMode()">{{ isSignUp ? 'Sign in' : 'Create an account' }}</button>
+			</p> -->
+		</section>
+	</main>
+</ng-template>

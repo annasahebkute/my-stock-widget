@@ -33,6 +33,24 @@
   <p class="message" *ngIf="message">{{ message }}</p>
   <p class="error" *ngIf="error">{{ error }}</p>
 
+  <section class="sms-test">
+    <h2>Test SMS</h2>
+    <div class="sms-fields">
+      <label>
+        Phone number
+        <input name="smsPhone" [(ngModel)]="smsPhone" placeholder="+919876543210" type="tel">
+      </label>
+      <label>
+        Message
+        <input name="smsMessage" [(ngModel)]="smsMessage" placeholder="Test message">
+      </label>
+      <button class="primary" type="button" (click)="sendTestSms()" [disabled]="smsSending">
+        {{ smsSending ? 'Sending...' : 'Send test SMS' }}
+      </button>
+    </div>
+    <p class="message" *ngIf="smsStatus">{{ smsStatus }}</p>
+  </section>
+
   <div class="table-scroll">
     <table class="manage-table">
       <thead>

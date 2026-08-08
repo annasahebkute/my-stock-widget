@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { StockHolding, StockService } from '../stock/stock.service';
+import { SmsService } from '../sms.service';
 
 @Component({
   selector: 'app-manage-stocks',
@@ -17,9 +18,13 @@ export class ManageStocksComponent implements OnInit, OnDestroy {
   message = '';
   error = '';
   saving = false;
+  smsPhone = '';
+  smsMessage = 'MyStockWidget SMS test';
+  smsSending = false;
+  smsStatus = '';
   private stocksSubscription?: { unsubscribe: () => void };
 
-  constructor(private stockService: StockService) { }
+  constructor(private stockService: StockService, private smsService: SmsService) { }
 
   ngOnInit(): void {
     this.stocksSubscription = this.stockService.watchStocks().subscribe({
@@ -90,6 +95,26 @@ export class ManageStocksComponent implements OnInit, OnDestroy {
     } catch {
       this.error = 'Unable to delete the stock from Firebase.';
     }
+  }
+
+  sendTestSms(): void {
+    this.smsStatus = '';
+    if (!this.smsPhone.trim() || !this.smsMessage.trim()) {
+      this.smsStatus = 'Enter a phone number and message.';
+      return;
+    }
+
+    this.smsSending = true;
+    this.smsService.sendSms(this.smsPhone.trim(), this.smsMessage.trim()).subscribe({
+      next: () => {
+        this.smsStatus = 'SMS sent successfully.';
+        this.smsSending = false;
+      },
+      error: () => {
+        this.smsStatus = 'SMS failed. Check the number, Twilio settings, and Function logs.';
+        this.smsSending = false;
+      }
+    });
   }
 
   cancelEdit(): void {
